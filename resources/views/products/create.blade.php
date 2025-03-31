@@ -1,35 +1,36 @@
-@extends('layout')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Product</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS -->
+</head>
+<body class="bg-gray-100 p-10">
 
-@section('content')
-    <div class="max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg mt-10">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-6">Create New Product</h2>
-        
-        <form action="{{ route('products.store') }}" method="POST" class="space-y-6">
+    <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-semibold mb-6 text-center">Create New Product</h1>
+
+        <form action="{{ route('products.store') }}" method="POST">
             @csrf
-            
-            <div class="flex flex-col">
-                <label for="name" class="text-lg font-medium text-gray-700">Product Name</label>
-                <input type="text" name="name" id="name" placeholder="Enter Product Name" required 
-                    class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300">
+            <div class="mb-4">
+                <label for="productName" class="block text-sm font-medium text-gray-700">Product Name</label>
+                <input type="text" id="productName" name="name" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Enter product name" required>
             </div>
 
-            <div class="flex flex-col">
-                <label for="description" class="text-lg font-medium text-gray-700">Description</label>
-                <textarea name="description" id="description" placeholder="Enter product description..." 
-                    class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"></textarea>
+            <div class="mb-4">
+                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                <textarea id="description" name="description" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Enter product description" required></textarea>
             </div>
 
-            <div class="flex flex-col">
-                <label for="price" class="text-lg font-medium text-gray-700">Price</label>
-                <input type="number" step="0.01" name="price" id="price" placeholder="Enter Price" required 
-                    class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300">
+            <div class="mb-4">
+                <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                <input type="number" id="price" name="price" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Enter product price" required>
             </div>
 
-            <div class="flex justify-center">
-                <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-md text-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
-                    Save
-                </button>
-            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-md font-semibold hover:bg-blue-600">Save</button>
         </form>
     </div>
-@endsection
+
+</body>
+</html>

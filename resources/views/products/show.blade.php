@@ -1,4 +1,4 @@
-@extends('layout')
+<!-- @extends('layout')
 
 @section('content')
     <div class="max-w-4xl mx-auto p-6">
@@ -14,4 +14,43 @@
             </a>
         </div>
     </div>
-@endsection
+@endsection -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Product</title>
+  <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS -->
+</head>
+<body class="bg-gray-100 p-10">
+
+  <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+    <h1 class="text-2xl font-semibold mb-6 text-center">View Product</h1>
+    
+    <table class="w-full border-collapse border border-gray-300">
+      <thead>
+        <tr>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-700 border-b">Product Name</th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-700 border-b">Description</th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-700 border-b">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-6 py-4 border-b">{{ $product->name }}</td>
+          <td class="px-6 py-4 border-b">{{ $product->description }}</td>
+          <td class="px-6 py-4 border-b">${{ $product->price }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="mt-6 text-center">
+      <a href="{{ route('products.index') }}" class="inline-block bg-blue-500 text-white p-3 rounded-md font-semibold hover:bg-blue-600">Back to List</a>
+    </div>
+  </div>
+
+</body>
+</html>
+
