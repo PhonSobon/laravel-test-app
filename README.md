@@ -96,8 +96,8 @@ This project is licensed under the MIT License.
 
 ## Author
 **Your Name**
-- GitHub: [your-username](https://github.com/your-username)
-- LinkedIn: [Your Profile](https://linkedin.com/in/your-profile)
+- GitHub: [PhonSobon](https://github.com/PhonSobon)
+- LinkedIn: [Sobon phon](https://www.linkedin.com/in/sobon-phon-619a14264/)
 
 ---
 Feel free to update the author details and repository links! 🚀
