@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>BoxData</title>
     <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS -->
 </head>
@@ -38,7 +39,7 @@
 <!-- Why Join Section -->
 <section class="bg-white py-24">
     <div class="max-w-7xl mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-16">WHY JOIN This Community</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-16">Why Join This Community</h2>
 
         <!-- Subsection 1 -->
         <div class="flex flex-col-reverse md:flex-row items-center gap-10 mb-24">
@@ -105,6 +106,24 @@
                 </p>
             </div>
         </div>
+
+        <!-- Subsection 1 -->
+        <div class="flex flex-col-reverse md:flex-row items-center gap-10 mb-24">
+            <!-- Text -->
+            <div class="md:w-1/2 text-left">
+                <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">Share Your Voice</h3>
+                <p class="text-gray-700 text-base leading-relaxed">
+                Publish your own blog posts, tutorials, case studies,
+                 or opinion pieces. Build your personal brand, showcase your skills, 
+                  contribute to the community by sharing what you know.
+                </p>
+            </div>
+            <!-- Image -->
+            <div class="md:w-1/2">
+                <img src="{{ asset('images/Ai.png') }}" alt="Stay Ahead" class="mx-auto w-full max-w-sm">
+            </div>
+        </div>
+
     </div>
 </section>
 
