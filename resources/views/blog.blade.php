@@ -36,7 +36,7 @@
         <h2 class="text-center text-2xl font-bold mb-10">Our Blog</h2>
 
         <!-- Blog Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+        <div id="blog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
             @foreach ($blogs as $blog)
                 <a href="{{ route('blog.show', $blog->id) }}" class="block bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition">
                     <!-- Blog Thumbnail -->
@@ -54,7 +54,7 @@
                         </h3>
                         <!-- Blog Description -->
                         <p class="text-sm text-gray-600 mb-4">
-                            {{ Str::limit($blog->description, 100, '...') }}
+                            {{ Str::limit($blog->content, 100, '...') }}
                         </p>
                         <!-- Author & Date -->
                         <div class="flex items-center text-sm text-gray-500">
@@ -69,9 +69,35 @@
         <!-- View All Posts Button -->
         <div class="flex justify-center mt-8">
             <button class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600">
-                View All Posts
+                load more
             </button>
         </div>
     </div>
+    <script>
+        let currentPage = 1; // Track the current page
+
+        document.getElementById('load-more').addEventListener('click', function () {
+            currentPage++; // Increment the page number
+
+            // Make an AJAX request to fetch the next page of blogs
+            fetch(`/blog?page=${currentPage}`)
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const html = parser.parseFromString(data, 'text/html');
+                    const newBlogs = html.querySelector('#blog-grid').innerHTML;
+
+                    // Append the new blogs to the existing grid
+                    document.getElementById('blog-grid').innerHTML += newBlogs;
+
+                    // Check if there are more blogs to load
+                    const loadMoreButton = html.querySelector('#load-more');
+                    if (!loadMoreButton) {
+                        document.getElementById('load-more').style.display = 'none'; // Hide the button if no more blogs
+                    }
+                })
+                .catch(error => console.error('Error loading more blogs:', error));
+        });
+    </script>
 </body>
 </html>

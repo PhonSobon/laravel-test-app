@@ -56,7 +56,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/blog', function () {
-    $blogs = Blog::latest()->paginate(9); // Fetch blogs with pagination
+    $blogs = Blog::latest()->paginate(12); // Fetch blogs with pagination
     return view('blog', compact('blogs'));
 })->middleware(['auth'])->name('blog');
 
