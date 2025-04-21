@@ -62,6 +62,7 @@ Route::get('/blog', function () {
 
 Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');
 Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blog/category/{category}', [BlogController::class, 'filterByCategory'])->name('blog.category');
 
 // Use resource routing for ProductController to handle all CRUD operations
 Route::resource('products', ProductController::class);

@@ -34,11 +34,18 @@ class BlogController extends Controller
     // Redirect to the blog page with a success message
     return redirect()->route('blog')->with('success', 'Blog created successfully!');
 }
-    public function show($id)
-        {
+public function show($id){
             $blog = Blog::findOrFail($id); // Fetch the blog by ID
             return view('blog-show', compact('blog'));
-        }
+}
+public function filterByCategory($category)
+{
+    // Fetch blogs that match the selected category
+    $blogs = Blog::where('category', $category)->get();
+
+    // Pass the blogs and category to the view
+    return view('blog', compact('blogs', 'category'));
+}
     
         
 }
