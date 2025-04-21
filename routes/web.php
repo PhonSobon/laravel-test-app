@@ -7,6 +7,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserPhotoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Models\Blog;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,11 +40,28 @@ Route::get('/contact-us', function () {
     return view('contact-us');
 })->name('contact-us');
 
+Route::get('/blog', function () {
+    return view('blog');
+})->middleware(['auth'])->name('blog');
+
+Route::get('/create-blog', function () {
+    return view('create-blog');
+})->middleware(['auth'])->name('create-blog');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+Route::get('/blog', function () {
+    $blogs = Blog::latest()->paginate(9); // Fetch blogs with pagination
+    return view('blog', compact('blogs'));
+})->middleware(['auth'])->name('blog');
+
+Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');
+Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
 
 // Use resource routing for ProductController to handle all CRUD operations
 Route::resource('products', ProductController::class);

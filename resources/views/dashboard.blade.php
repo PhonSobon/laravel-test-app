@@ -14,8 +14,4 @@
             </div>
         </div>
     </div>
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="text-sm text-gray-700 dark:text-gray-500 underline">Logout</button>
-    </form>
 </x-app-layout>
