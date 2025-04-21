@@ -1,43 +1,61 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Blog') }}
-        </h2>
-    </x-slot>
+    <div class="bg-white py-10">
+        <!-- Search Bar -->
+        <div class="max-w-xl mx-auto mb-10">
+            <input
+                type="text"
+                placeholder="Search"
+                class="w-full px-6 py-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+        </div>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <h1 class="text-3xl font-bold mb-10 text-center">Our Blog</h1>
+        <!-- Category Filters -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            @php
+                $tags = ['Data Engineer', 'Data Analytics', 'Data Science', 'Big Data', 'Machine Learning', 'NLP', 'AI'];
+            @endphp
+            @foreach ($tags as $tag)
+                <span class="bg-blue-400 text-white text-sm px-4 py-2 rounded-full cursor-pointer hover:bg-blue-500 transition">
+                    {{ $tag }}
+                </span>
+            @endforeach
+        </div>
 
-                    <!-- Blog List -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        @foreach ($blogs as $blog)
-                            <div class="bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden">
-                                <!-- Blog Thumbnail -->
-                                <img src="{{ $blog->thumbnail ? asset('storage/' . $blog->thumbnail) : 'https://via.placeholder.com/400x200' }}" 
-                                    alt="Blog Thumbnail" class="w-full h-48 object-cover">
-                                <div class="p-4">
-                                    <!-- Blog Category -->
-                                    <span class="text-blue-400 text-sm font-medium">{{ $blog->category }}</span>
-                                    <!-- Blog Title -->
-                                    <h3 class="text-lg font-bold mt-2">{{ $blog->title }}</h3>
-                                    <!-- Blog Author and Date -->
-                                    <p class="text-gray-400 text-xs mt-4">By {{ $blog->author }} | {{ $blog->created_at->format('M d, Y') }}</p>
-                                    <!-- Read More Link -->
-                                    <a href="{{ route('blog.show', $blog->id) }}" class="text-blue-400 text-sm font-medium mt-4 inline-block hover:underline">Read More</a>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
+        <!-- Blog Section Title -->
+        <h2 class="text-center text-2xl font-bold mb-10">Our Blog</h2>
 
-                    <!-- Pagination -->
-                    <div class="mt-10 text-center">
-                        {{ $blogs->links() }}
+        <!-- Blog Grid -->
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-4">
+            @foreach ($blogs as $blog)
+                <div class="bg-gray-900 rounded-lg overflow-hidden shadow-md">
+                    <!-- Blog Thumbnail -->
+                    <img
+                        src="{{ $blog->thumbnail ? asset('storage/' . $blog->thumbnail) : 'https://via.placeholder.com/300x150' }}"
+                        alt="Blog Image"
+                        class="w-full h-36 object-cover"
+                    />
+                    <div class="p-3">
+                        <!-- Blog Category -->
+                        <p class="text-xs text-blue-400 font-medium mb-1">{{ $blog->category }}</p>
+                        <!-- Blog Title -->
+                        <h3 class="font-semibold text-sm leading-snug">{{ $blog->title }}</h3>
+
+                        <!-- Author & Date -->
+                        <div class="flex items-center mt-3 text-xs text-gray-400 space-x-2">
+                            <img src="{{ $blog->author_avatar ?? 'https://i.pravatar.cc/32' }}" class="w-5 h-5 rounded-full" />
+                            <span>{{ $blog->author }}</span>
+                            <span>{{ $blog->created_at->format('F d, Y') }}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
+        </div>
+
+        <!-- View All Button -->
+        <div class="mt-10 text-center">
+            <button class="px-6 py-2 bg-gray-200 text-sm rounded hover:bg-gray-300 transition">
+                View All Post
+            </button>
         </div>
     </div>
 </x-app-layout>
