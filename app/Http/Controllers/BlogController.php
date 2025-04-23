@@ -6,8 +6,22 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function store(Request $request)
-{
+
+     /**
+     * Display a listing of the blogs.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        // Fetch all blogs (or paginate them)
+        $blogs = Blog::paginate(12);
+
+        // Return the blog view with the blogs data
+        return view('blog', compact('blogs'));
+    }
+
+    public function store(Request $request){
     // Validate the form data
     $request->validate([
         'title' => 'required|string|max:255',

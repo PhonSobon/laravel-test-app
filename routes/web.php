@@ -7,6 +7,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserPhotoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 use App\Models\Blog;
 
 /*
@@ -67,5 +69,29 @@ Route::get('/blog/category/{category}', [BlogController::class, 'filterByCategor
 // Use resource routing for ProductController to handle all CRUD operations
 Route::resource('products', ProductController::class);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+});
+
+// Admin Dashboard Route
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+});
+
+// Blog Page Route
+Route::middleware(['auth'])->group(function () {
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+});
+
 
 require __DIR__.'/auth.php';
