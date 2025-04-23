@@ -1,14 +1,13 @@
 <x-admin-navbar />
 <div class="container mx-auto py-10">
-    <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="#" class="block bg-blue-500 text-white p-6 rounded-lg shadow hover:bg-blue-600">
-            <h2 class="text-xl font-bold">Create</h2>
-            <p>Create new resources</p>
+    <div class="grid grid-cols-1 text-center md:grid-cols-3 gap-6 m-4">
+        <a href="#" class="block  bg-blue-500 text-white p-6 rounded-lg shadow hover:bg-blue-600">
+            <h2 class="text-xl font-bold">Total Users</h2>
+            <p class="text-lg font-bold">{{ $totalUsers }}</p>
         </a>
         <a href="#" class="block bg-green-500 text-white p-6 rounded-lg shadow hover:bg-green-600">
-            <h2 class="text-xl font-bold">Edit</h2>
-            <p>Edit existing resources</p>
+            <h2 class="text-xl font-bold">Total Content</h2>
+            <p class="text-lg font-bold">{{ $totalContent }}</p>
         </a>
         <a href="#" class="block bg-red-500 text-white p-6 rounded-lg shadow hover:bg-red-600">
             <h2 class="text-xl font-bold">Delete</h2>

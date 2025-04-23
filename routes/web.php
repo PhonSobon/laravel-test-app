@@ -78,7 +78,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 });
-
 // Blog Page Route
 Route::middleware(['auth'])->group(function () {
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
