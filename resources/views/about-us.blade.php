@@ -12,10 +12,23 @@
 
     <!-- Hero Section -->
     <div class="bg-white">
-  <div class="w-full h-[600px] overflow-hidden">
-    <img src="{{ asset('images/Ai_feature.jpg') }}" alt="Banner" class="w-full h-full object-cover">
-  </div>
-</div>
+        <div class="flex flex-col md:flex-row items-center gap-10 mb-24">
+                <!-- Image -->
+                <div class="md:w-1/2">
+                    <img src="{{ asset('images/Learn.png') }}" alt="Learn & Grow" class="mx-auto w-full max-w-sm">
+                </div>
+                <!-- Text -->
+                <div class="md:w-1/2 text-left">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">Welcome to BoxData</h3>
+                    <p class="text-gray-700 text-base leading-relaxed">
+                    your community hub for Data Science, Big Data, and Artificial Intelligence.
+                    At BoxData, we believe in the power of collaboration and shared knowledge. Our platform is built for data professionals, researchers, and
+                     enthusiasts who are passionate about exploring the evolving world of data-driven technologies. Whether you're delving into Machine Learning algorithms,
+                      discussing the latest AI breakthroughs, or sharing insights on scalable Big Data systems, BoxData is the place to connect, learn, and grow.
+                    </p>
+                </div>
+        </div>
+    </div>
 
     <!-- Vision Section -->
     <section class="bg-white py-10 border-t-4 border-blue-900">
