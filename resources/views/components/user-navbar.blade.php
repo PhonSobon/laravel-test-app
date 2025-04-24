@@ -15,7 +15,7 @@
                     <div class="flex items-center justify-center space-x-8">
                             <a href="{{ route('blog') }}" class="hover:underline">Blog</a>
                             <a href="{{ route('create-blog') }}" class="hover:underline">Create Blog</a>
-                            <a href="{{ route('dashboard') }}" class="hover:underline">Dashboard</a>
+                            <!-- <a href="{{ route('dashboard') }}" class="hover:underline">Dashboard</a> -->
                     </div>
                 </div>
                 
