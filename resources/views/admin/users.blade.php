@@ -1,6 +1,5 @@
 <x-admin-navbar />
 <div class="container mx-auto py-10">
-    <h1 class="text-3xl font-bold mb-6">Manage Users</h1>
 
     <!-- <div class="mb-4">
         <a href="{{ route('admin.users.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md shadow">

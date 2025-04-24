@@ -1,9 +1,13 @@
 <x-admin-navbar />
-<div class="container items-center justify-center mx-auto py-10">
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
     <div class="w-full md:w-1/2 max-w-md bg-white p-8 rounded-lg shadow-lg">
-        <!-- Page Title -->
-        <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Create User</h2>
-        
+        <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Create User</h2>
+            <!-- Success Notification -->
+        @if (session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                {{ session('success') }}
+            </div>
+        @endif
         <form method="POST" action="{{ route('admin.users.store') }}">
             @csrf
 
@@ -50,6 +54,7 @@
     </div>
 </div>
 
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
